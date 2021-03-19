@@ -1,0 +1,13 @@
+<div class="dialog">
+    <div class="container">
+        <button class=" closeBtn material-icons" (click)="closeDialog()">close</button>
+        <form class="add-form">
+            <input type="text" name="name" class="inputForm" placeholder="Tên loại sản phẩm" [(ngModel)]="name"
+                required>
+            <button *ngIf="!isEdit" type="button" class=" addBtn actionsBtn btn-outline-primary" (click)="addCategory()"
+                [mat-dialog-close]="true">Thêm</button>
+            <button *ngIf="isEdit" type="button" class=" editBtn actionsBtn btn-outline-primary"
+                (click)="editCategory()" [mat-dialog-close]="true">Cập nhật</button>
+        </form>
+    </div>
+</div>

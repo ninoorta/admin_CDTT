@@ -1,0 +1,42 @@
+.products {
+  float: right;
+  width: calc(100% - 200px);
+  height: 100%;
+  max-height: 100%;
+
+  padding-bottom: 50px;
+  background-color: #eee;
+
+  .aboveTable {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    .btn-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1rem 0;
+
+      .addBtn {
+        font-size: 30px;
+      }
+    }
+    .actionBtn {
+      margin-left: 5px;
+    }
+  }
+
+  .images {
+    width: 100px;
+    height: 100px;
+  }
+
+  table.mat-table {
+    width: 100%;
+  }
+
+  mat-footer-row mat-footer-cell {
+    justify-content: center;
+    font-style: italic;
+  }
+}

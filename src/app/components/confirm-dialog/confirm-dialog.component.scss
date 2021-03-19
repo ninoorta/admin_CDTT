@@ -1,0 +1,43 @@
+.confirm {
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+
+  .closeBtn {
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    content: "";
+    top: -5px;
+    right: -5px;
+  }
+
+  &-text {
+    font-size: 20px;
+    padding: 1rem 0;
+    font-weight: 500;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      color: white;
+      border-radius: 25px;
+      padding: 0.5rem 2rem;
+      margin: 0 1rem;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .yesBtn {
+      background-color: #f44336;
+    }
+    .noBtn {
+      background-color: #9e9e9e;
+    }
+  }
+}
