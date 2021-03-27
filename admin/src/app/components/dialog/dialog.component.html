@@ -1,0 +1,44 @@
+<div class="dialog">
+    <div class="container">
+        <button class=" closeBtn material-icons" (click)="closeDialog()">close</button>
+        <form class="add-form">
+            <!-- Image -->
+            <div class="image-wrapper">
+                <p *ngIf="!productImageLink">Hãy thêm ảnh cho sản phẩm này</p>
+                <img [src]="productImageLink" *ngIf="productImageLink">
+                <label class="icon-wrapper" for="productImage">
+                    <span class="material-icons">
+                        add_a_photo
+                    </span>
+                    <input type="file" accept="image/*" name="productImage" hidden id="productImage"
+                        (change)="changeProductImage($event)">
+                </label>
+            </div>
+            <input type="text" name="productName" class="inputForm" placeholder="Tên sản phẩm" [(ngModel)]="productName"
+                required>
+            <input type="text" name="productCode" class="inputForm" placeholder="Mã vạch(13 số)"
+                [(ngModel)]="productCode" required maxlength="13">
+            <input type="text" name="productPrice" class="inputForm" placeholder="Giá thành" [(ngModel)]="productPrice">
+            <input type="number" min="0" name="productAvailability" class="inputForm" placeholder="Số lượng"
+                [(ngModel)]="productAvailability">
+
+            <div class="category-wrapper">
+                <label for="categories">Sản phẩm này thuộc loại:</label>
+                <select name="categories" id="categories" [(ngModel)]="selectedCategoryID">
+                    <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                </select>
+            </div>
+
+            <ng-multiselect-dropdown [placeholder]="'Sản phẩm đang có ở cửa hàng'" [settings]="dropdownSettings"
+                [data]="dropdownList" [(ngModel)]="selectedStores" (onSelect)="onItemSelect($event)"
+                [ngModelOptions]="{standalone: true}" (onSelectAll)="onSelectAll($event)"
+                (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onDeSelectAll()">
+            </ng-multiselect-dropdown>
+
+            <button *ngIf="!isEdit" type="button" class=" addBtn actionsBtn btn-outline-primary" (click)="addProduct()"
+                [mat-dialog-close]="true">Thêm</button>
+            <button *ngIf="isEdit" type="button" class=" editBtn actionsBtn btn-outline-primary" (click)="editProduct()"
+                [mat-dialog-close]="true">Cập nhật</button>
+        </form>
+    </div>
+</div>

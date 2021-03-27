@@ -1,0 +1,41 @@
+.dialog {
+  position: relative;
+  padding: 2rem;
+
+  .closeBtn {
+    outline: none;
+    border: none;
+    background-color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    content: "";
+    right: 0;
+    top: -5px;
+  }
+  .add-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inputForm {
+    border: 0.1px solid #9caac2;
+    color: #224177;
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    margin: 0.5rem 0;
+  }
+  .actionsBtn {
+    outline: none;
+    border: none;
+    width: 90px;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 1rem;
+  }
+}

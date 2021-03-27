@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "material-icons/iconfont/material-icons.scss";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+ul {
+  li {
+    list-style: none;
+  }
+}
+
+.success {
+  background-color: #ffc107;
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+<div class="dialog">
+    <div class="container">
+        <button class=" closeBtn material-icons" (click)="closeDialog()">close</button>
+        <form class="add-form">
+            <input type="text" name="ten" class="inputForm" placeholder="Tên cửa hàng" [(ngModel)]="ten" required>
+            <input type="text" name="thanhPho" class="inputForm" placeholder="Thuộc thành phố" [(ngModel)]="thanhPho"
+                required>
+            <input type="text" name="huyen" class="inputForm" placeholder="Thuộc huyện / quận" [(ngModel)]="huyen"
+                required>
+            <input type="text" name="xa" class="inputForm" placeholder="Thuộc xã / phường" [(ngModel)]="xa" required>
+            <input type="text" name="chiTiet" class="inputForm" placeholder="Thông tin chi tiết" [(ngModel)]="chiTiet"
+                required>
+            <button *ngIf="!isEdit" type="button" class=" addBtn actionsBtn btn-outline-primary" (click)="addStore()"
+                [mat-dialog-close]="true">Thêm</button>
+            <button *ngIf="isEdit" type="button" class=" editBtn actionsBtn btn-outline-primary" (click)="editStore()"
+                [mat-dialog-close]="true">Cập nhật</button>
+        </form>
+    </div>
+</div>
