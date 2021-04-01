@@ -5,6 +5,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { ReportComponent } from './components/report/report.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { StoresComponent } from './components/stores/stores.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,10 @@ const routes: Routes = [
   {
     path: "report",
     component: ReportComponent
-
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent
   },
   {
     path: '**', redirectTo: "/products", pathMatch: 'full'

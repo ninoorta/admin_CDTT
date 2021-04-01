@@ -34,6 +34,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { DialogCategoryComponent } from './components/dialog-category/dialog-category.component';
 import { StoresComponent } from './components/stores/stores.component';
 import { DialogStoreComponent } from './components/dialog-store/dialog-store.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { DialogShowComponent } from './components/dialog-show/dialog-show.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { DialogStoreComponent } from './components/dialog-store/dialog-store.com
     DialogCategoryComponent,
     StoresComponent,
     DialogStoreComponent,
+    OrdersComponent,
+    DialogShowComponent,
   ],
   imports: [
     BrowserModule,

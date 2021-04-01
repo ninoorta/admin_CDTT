@@ -3,21 +3,12 @@
         Admin
     </div>
     <ul class="menu__sidebar">
-        <li class="menu__sidebar-item active" [ngClass]="{active: id === 1}" id="1" (click)="addActive(id = 1)"
-            routerLink="/products">
-            Sản phẩm
-        </li>
-        <li class="menu__sidebar-item " [ngClass]="{active: id === 2}" id="2" (click)="addActive(id = 2)"
-            routerLink="/categories">
-            Loại sản phẩm
-        </li>
-        <li class="menu__sidebar-item" [ngClass]="{active: id === 3}" id="3" (click)="addActive(id = 3)"
-            routerLink="/report">
-            Báo cáo
-        </li>
-        <li class="menu__sidebar-item" [ngClass]="{active: id === 3}" id="3" (click)="addActive(id = 3)"
-            routerLink="/stores">
-            Danh sách các cửa hàng
+        <li [class]="splitedUrl.includes(item.elementOnUrl) ? 'liActive' : 'liDefault'" *ngFor="let item of menuItem"
+            routerLink="{{item.link}}">
+            <span [class]="item.class">{{item.icon}}</span>
+            <span>
+                {{item.title}}
+            </span>
         </li>
     </ul>
 </div>

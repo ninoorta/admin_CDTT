@@ -1,0 +1,41 @@
+<div class="dialog-show">
+    <div class="container-fluid">
+        <button class="material-icons btn closeBtn" (click)="closeDialog()">close</button>
+
+        <div class="recipientInfo" *ngIf="isRecipient">
+            <h3 class="recipientInfo__title">
+                Thông tin người nhận
+            </h3>
+            <div class="recipientInfo__content">
+                <div class="name">
+                    <span>Họ tên người nhận: </span>
+                    <span>{{recipientName}}</span>
+                </div>
+                <div class="address">
+                    <span>Địa chỉ người nhận: </span>
+                    <span>{{recipientAddress}}</span>
+                </div>
+                <div class="phone">
+                    <span>Số điện thoại: </span>
+                    <span>{{recipientPhone}}</span>
+                </div>
+                <div class="note">
+                    <span>Ghi chú: </span>
+                    <span>{{recipientNote}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="products" *ngIf="!isRecipient">
+            <h3 class="products__title">Các sản phẩm trong đơn hàng này</h3>
+            <div class="products__content">
+                <ul>
+                    <li *ngFor="let product of products; let i = index">
+                        {{i+1}}. {{product.name}} x{{product.amount}}
+                        <span>{{product.priceToShow}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

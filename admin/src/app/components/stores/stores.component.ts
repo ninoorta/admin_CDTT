@@ -47,7 +47,10 @@ export class StoresComponent implements OnInit {
   }
 
   openAddDialog() {
-    this.dialog.open(DialogStoreComponent, { data: "add" }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogStoreComponent, {
+      data: "add",
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       if (res) {
         this.notiService.success("Thêm cửa hàng thành công");
         this.getStores();
@@ -56,7 +59,10 @@ export class StoresComponent implements OnInit {
   }
 
   onEdit(chosenID: string) {
-    this.dialog.open(DialogStoreComponent, { data: chosenID }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogStoreComponent, {
+      data: chosenID,
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       if (res) {
         this.notiService.success("Cập nhật cửa hàng thành công");
         this.getStores();
@@ -66,7 +72,7 @@ export class StoresComponent implements OnInit {
 
   onDelete(chosenID: string) {
     console.log('delete', chosenID);
-    this.dialog.open(ConfirmDialogComponent).afterClosed()
+    this.dialog.open(ConfirmDialogComponent, { autoFocus: false }).afterClosed()
       .subscribe(res => {
         console.log(res);
         if (res) {

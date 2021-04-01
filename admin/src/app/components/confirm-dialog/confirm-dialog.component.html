@@ -1,7 +1,8 @@
 <div class="confirm">
     <div class="container">
         <button class="btn closeBtn material-icons" (click)="onClose()">close</button>
-        <p class="confirm-text">Bạn chắc chắn muốn xóa sản phẩm này chứ?</p>
+        <p class="confirm-text" *ngIf="!isDone">Bạn chắc chắn muốn xóa sản phẩm này chứ?</p>
+        <p class="confirm-text" *ngIf="isDone">Bạn chắc chắn đơn hàng này đã hoàn thành rồi chứ?</p>
         <div class="actions">
             <button class="btn yesBtn material-icons" [mat-dialog-close]="true">done</button>
             <button class="btn noBtn material-icons" [mat-dialog-close]="false">cancel</button>

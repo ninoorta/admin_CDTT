@@ -75,7 +75,10 @@ export class CategoriesComponent implements OnInit {
 
   openAddDialog() {
     console.log("click open dialog")
-    this.dialog.open(DialogCategoryComponent, { data: "add" }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogCategoryComponent, {
+      data: "add",
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       console.log("add res", res)
       if (res) {
         this.notiService.success("Thêm thành công");
@@ -88,7 +91,7 @@ export class CategoriesComponent implements OnInit {
 
   onDelete(chosenID: string) {
     console.log('delete', chosenID);
-    this.dialog.open(ConfirmDialogComponent).afterClosed()
+    this.dialog.open(ConfirmDialogComponent, { autoFocus: false }).afterClosed()
       .subscribe(res => {
         console.log(res);
         if (res) {
@@ -101,7 +104,10 @@ export class CategoriesComponent implements OnInit {
 
   onEdit(chosenID: string) {
     console.log('edit', chosenID)
-    this.dialog.open(DialogCategoryComponent, { data: chosenID }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogCategoryComponent, {
+      data: chosenID,
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       console.log("edit res", res)
       if (res) {
         this.notiService.success("Sửa thành công");

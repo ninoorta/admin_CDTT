@@ -1,0 +1,19 @@
+.orders {
+  float: right;
+  width: calc(100% - 200px);
+  height: 100%;
+  max-height: 100%;
+
+  padding-bottom: 50px;
+  background-color: #eee;
+
+  .filter {
+    .mat-form-field {
+      width: 269px;
+    }
+  }
+
+  table {
+    width: 100%;
+  }
+}

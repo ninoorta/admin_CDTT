@@ -1,0 +1,31 @@
+.dialog-show {
+  position: relative;
+  .closeBtn {
+    font-weight: bold;
+    position: absolute;
+    content: "";
+    right: -20px;
+    top: -25px;
+    font-size: 25px;
+  }
+  .recipientInfo {
+    padding-top: 1rem;
+    &__title {
+    }
+
+    &__content {
+      padding: 1rem;
+
+      div {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  .products {
+    padding-top: 1rem;
+    &__content {
+      padding: 0.5rem 0;
+    }
+  }
+}

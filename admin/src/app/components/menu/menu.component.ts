@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { menuItem } from './menu-item';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, DoCheck {
 
-  id: any = 1;
-  constructor(private router: Router) { }
+  splitedUrl: Array<string>;
+  menuItem: Array<object>
+
+  constructor() {
+    this.menuItem = menuItem;
+  }
+
+  ngDoCheck(): void {
+    this.splitedUrl = window.location.href.split('/')
+    // console.log("do check:", this.splitedUrl);
+
+  }
 
   ngOnInit(): void {
-
+    this.splitedUrl = window.location.href.split('/')
+    // console.log("do init:", this.splitedUrl);
   }
 
-  addActive(id: any) {
-    // this.id = id;
-    // console.log(this.id)
-    // if (id == 1) {
-    //   this.router.navigate(["/products"])
-    // } else {
-    //   this.router.navigate(["/report"])
-    // }
-  }
 
 }

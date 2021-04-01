@@ -1,0 +1,122 @@
+<app-menu></app-menu>
+<div class="orders">
+    <!-- Table -->
+    <div class="container-fluid">
+        <div class="aboveTable">
+            <div class="search">
+                <mat-form-field class="search-form-field" floatLabel="never">
+                    <input matInput [(ngModel)]="searchValue" placeholder="Tìm kiếm" autocomplete="off"
+                        (keyup)="applyFilter()">
+                    <button matSuffix class="material-icons btn" aria-label="Clear" *ngIf="searchValue"
+                        (click)="onSearchClear()">
+                        close
+                    </button>
+                </mat-form-field>
+                <div class="filter">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Xem theo tình trạng đơn hàng</mat-label>
+                        <mat-select matNativeControl (selectionChange)="getFilterStatus($event)">
+                            <mat-option value="">Không</mat-option>
+                            <mat-option value="Đang giao hàng">Đang giao hàng</mat-option>
+                            <mat-option value="Đã giao hàng">Đã giao hàng</mat-option>
+                            <mat-option value="Đã thanh toán">Đã thanh toán</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isLoading">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="index">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
+                    <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="orderID">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Mã đơn hàng </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="products">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Các sản phẩm </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center; cursor: pointer;"
+                        (click)="openProducts(element.id)">
+                        <span class="material-icons">
+                            list_alt
+                        </span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalMoney">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tổng tiền thanh toán </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalMoney}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="totalProducts">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tổng sản phẩm </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalProducts}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdAt">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngày lập đơn </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="doneAt">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngày hoàn thành đơn </th>
+                    <td mat-cell *matCellDef="let element"> {{element.doneAt}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="method">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Phương thức nhận hàng </th>
+                    <td mat-cell *matCellDef="let element"> {{element.method == 'direct'? 'Tại cửa hàng' : 'Giao tận
+                        nơi'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="storeToPick">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Thanh toán tại</th>
+                    <td mat-cell *matCellDef="let element"> {{element?.storeToPick?.ten}} {{element?.isExtra? '( Có phụ
+                        phí )' : ''}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="paymentMethod">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Phương thức thanh toán</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element?.paymentMethod}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="recipient">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Người nhận</th>
+                    <td style="cursor: pointer;" mat-cell *matCellDef="let element"
+                        (click)="openRecipient(element.id, element.recipient.userID)">
+                        {{element?.recipient?.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="isDone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tình trạng đơn hàng</th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-icon-button class="btn material-icons" [disabled]="row.isDone"
+                            (click)="doneOrder(row.id, $event)">
+                            assignment_turned_in
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+
+    </div>
+</div>

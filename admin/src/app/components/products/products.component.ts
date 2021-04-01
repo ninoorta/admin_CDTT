@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit, AfterViewInit {
+export class ProductsComponent implements OnInit {
 
   searchValue = "";
 
@@ -75,12 +75,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngAfterViewInit() {
-  }
-
   onDelete(chosenID: string) {
     console.log('delete', chosenID);
-    this.dialog.open(ConfirmDialogComponent).afterClosed()
+    this.dialog.open(ConfirmDialogComponent, { autoFocus: false }).afterClosed()
       .subscribe(res => {
         console.log(res);
         if (res) {
@@ -144,26 +141,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   }
 
-  // getFullCategories() {
-  //   this.db.collection("Categories").get().subscribe(data => {
-  //     // docs
-  //     // console.log("get data categories", data)
-
-  //     this.db.collection("Categories").valueChanges().subscribe(list => {
-
-  //       for (let i = 0; i < list.length; i++) {
-  //         list[i]["id"] = data.docs[i].id;
-  //       }
-
-  //       // console.log("full data categories", list)
-  //       this.categories = list;
-  //     })
-  //   })
-  // }
-
   onEdit(id: string) {
     console.log('edit', id)
-    this.dialog.open(DialogComponent, { data: id }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogComponent, {
+      data: id,
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       console.log("edit res", res)
 
       if (res) {
@@ -176,7 +159,10 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   openAddDialog() {
     console.log("click open dialog")
-    this.dialog.open(DialogComponent, { data: "add" }).afterClosed().subscribe(res => {
+    this.dialog.open(DialogComponent, {
+      data: "add",
+      autoFocus: false
+    }).afterClosed().subscribe(res => {
       console.log("add res", res)
       if (res) {
         this.notiService.success("Thêm sản phẩm thành công");

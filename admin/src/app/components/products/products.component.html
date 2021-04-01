@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div class="products">
     <!-- Table -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="aboveTable">
             <div class="btn-wrapper">
                 <button class="material-icons addBtn btn" (click)="openAddDialog()">add_circle_outline</button>
@@ -73,7 +73,7 @@
                     <td mat-cell *matCellDef="let row">
                         <ng-container *ngFor="let store of row.selectedStores">
                             {{store.ten}}
-                            <br /> <!-- Use br if you want to display the roles vertically -->
+                            <br />
                         </ng-container>
                     </td>
                 </ng-container>
