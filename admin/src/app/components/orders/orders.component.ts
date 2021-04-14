@@ -180,7 +180,7 @@ export class OrdersComponent implements OnInit {
 
   doneOrder(orderID, event) {
     console.log("order ID:", orderID)
-    console.log(event);
+    // console.log(event);
 
     this.dialog.open(ConfirmDialogComponent, {
       data: "isDone",
@@ -195,7 +195,6 @@ export class OrdersComponent implements OnInit {
           // console.log(data)
           currentDoc = data.docs[0].id;
 
-
           // Add doneAt
           let today = new Date();
           let currentMonth = today.getMonth() + 1;
@@ -207,7 +206,12 @@ export class OrdersComponent implements OnInit {
           let isAM = currentHour >= 12 ? "PM" : "AM";
           let doneAt = `${currentHour}:${fixMinutes} ${isAM} ${currentDay}/${currentMonth}/${currentYear}`;
 
-          this.db.collection("Orders").doc(currentDoc).update({ isDone: true, doneAt: doneAt })
+          // this.db.collection("Orders").doc(currentDoc).update({ isDone: true, doneAt: doneAt })
+
+          this.db.collection("Orders", ref => ref.where("id", "==", orderID)).valueChanges().subscribe(orderData => {
+            // let thisOrderData = order[0]
+            console.log("order done data", orderData)
+          })
         })
       }
     })

@@ -100,9 +100,11 @@ export class ProductsComponent implements OnInit {
       // Append id for products
       for (let i = 0; i < items.docs.length; i++) {
         this.productData[i] = {
-          id: items.docs[i].id,
+          productID: items.docs[i].id,
           ...this.productData[i]
         }
+
+        this.db.collection("Products", ref => ref.where("code", "==", this.productData[i].code)).doc(items.docs[i].id).update({ productID: items.docs[i].id })
       }
       console.log("new products data with id", this.productData)
 

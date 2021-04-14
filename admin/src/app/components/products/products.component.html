@@ -81,10 +81,10 @@
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef></th>
                     <td mat-cell *matCellDef="let row">
-                        <button mat-icon-button class="btn material-icons" (click)="onEdit(row.id)">
+                        <button mat-icon-button class="btn material-icons" (click)="onEdit(row.productID)">
                             launch
                         </button>
-                        <button mat-icon-button class="btn material-icons-outlined" (click)="onDelete(row.id)">
+                        <button mat-icon-button class="btn material-icons-outlined" (click)="onDelete(row.productID)">
                             delete
                         </button>
                     </td>
