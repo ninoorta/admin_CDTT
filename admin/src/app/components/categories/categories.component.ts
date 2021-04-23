@@ -60,6 +60,9 @@ export class CategoriesComponent implements OnInit {
         }
         console.log("new data with id", this.categoryData)
 
+        // sort categories with its name
+        this.categoryData.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+
         this.isLoading = false;
         this.dataSource = new MatTableDataSource(this.categoryData)
         this.dataSource.paginator = this.paginator;

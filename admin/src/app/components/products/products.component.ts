@@ -130,6 +130,10 @@ export class ProductsComponent implements OnInit {
 
       console.log("full form product data", this.productData)
 
+      // sort products with its name
+      this.productData.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+
+
       this.isLoading = false;
       this.dataSource = new MatTableDataSource(this.productData)
       this.dataSource.paginator = this.paginator;
