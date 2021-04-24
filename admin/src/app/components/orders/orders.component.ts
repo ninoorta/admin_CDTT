@@ -206,10 +206,9 @@ export class OrdersComponent implements OnInit {
           let isAM = currentHour >= 12 ? "PM" : "AM";
           let doneAt = `${currentHour}:${fixMinutes} ${isAM} ${currentDay}/${currentMonth}/${currentYear}`;
 
-          // this.db.collection("Orders").doc(currentDoc).update({ isDone: true, doneAt: doneAt })
+          this.db.collection("Orders").doc(currentDoc).update({ isDone: true, doneAt: doneAt })
 
           this.db.collection("Orders", ref => ref.where("id", "==", orderID)).valueChanges().subscribe(orderData => {
-            // let thisOrderData = order[0]
             console.log("order done data", orderData)
           })
         })
