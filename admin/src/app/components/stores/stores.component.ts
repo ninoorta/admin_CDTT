@@ -101,6 +101,8 @@ export class StoresComponent implements OnInit {
         }
       }
 
+      // sort stores with its ten
+      this.stores.sort((a, b) => (a.ten > b.ten) ? 1 : ((b.ten > a.ten) ? -1 : 0))
       console.log("new stores data with id", this.stores)
 
       this.isLoading = false;
